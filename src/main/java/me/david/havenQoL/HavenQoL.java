@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.UUID;
 import me.david.havenQoL.listeners.DeathCoordinatesListener;
 import me.david.havenQoL.commands.SetHomeCommand;
+import me.david.havenQoL.commands.HomeCommand;
 
 
 public final class HavenQoL extends JavaPlugin {
@@ -20,6 +21,7 @@ public final class HavenQoL extends JavaPlugin {
         );
 
         getCommand("sethome").setExecutor(new SetHomeCommand(this));
+        getCommand("home").setExecutor(new HomeCommand(this));
 
         }
 

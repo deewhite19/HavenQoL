@@ -9,3 +9,6 @@ commands:
   sethome:
     description: Sets your home location.
     usage: /sethome
+  home:
+    description: Teleports player to home.
+    usage: /home
