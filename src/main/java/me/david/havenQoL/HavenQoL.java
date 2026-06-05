@@ -1,5 +1,7 @@
 package me.david.havenQoL;
 
+import me.david.havenQoL.commands.PlayerStatsCommand;
+import me.david.havenQoL.listeners.StatsGUIListener;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.Location;
 import java.util.HashMap;
@@ -15,13 +17,12 @@ public final class HavenQoL extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        getServer().getPluginManager().registerEvents(
-                new DeathCoordinatesListener(),
-                this
-        );
+        getServer().getPluginManager().registerEvents(new DeathCoordinatesListener(), this);
+        getServer().getPluginManager().registerEvents(new StatsGUIListener(), this);
 
         getCommand("sethome").setExecutor(new SetHomeCommand(this));
         getCommand("home").setExecutor(new HomeCommand(this));
+        getCommand("playerstats").setExecutor(new PlayerStatsCommand());
 
         }
 

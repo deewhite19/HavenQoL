@@ -12,3 +12,6 @@ commands:
   home:
     description: Teleports player to home.
     usage: /home
+  playerstats:
+    description: Opens your player statistics menu.
+    usage: /playerstats
