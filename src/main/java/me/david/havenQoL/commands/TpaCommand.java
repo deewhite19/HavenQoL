@@ -7,6 +7,8 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.util.UUID;
+
 public class TpaCommand implements CommandExecutor {
 
     private final HavenQoL plugin;
@@ -50,6 +52,25 @@ public class TpaCommand implements CommandExecutor {
         player.sendMessage("TPA request sent.");
         target.sendMessage(player.getName() + " has sent you a TPA request.");
         target.sendMessage("Type /tpaccept to accept.");
+
+        Bukkit.getScheduler().runTaskLater(plugin, () -> {
+
+            UUID storedRequester = plugin.getTpaRequests().get(target.getUniqueId());
+
+            if (storedRequester == null) {
+                return;
+            }
+
+            if (!storedRequester.equals(player.getUniqueId())) {
+                return;
+            }
+
+            plugin.getTpaRequests().remove(target.getUniqueId());
+
+            player.sendMessage("Your TPA request to " + target.getName() + " has expired.");
+            target.sendMessage("The TPA request from " + player.getName() + " has expired.");
+
+        }, 20L * 60);
 
         return true;
     }

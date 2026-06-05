@@ -29,6 +29,7 @@ public final class HavenQoL extends JavaPlugin {
         getCommand("home").setExecutor(new HomeCommand(this));
         getCommand("tpa").setExecutor(new TpaCommand(this));
         getCommand("tpaccept").setExecutor(new TpAcceptCommand(this));
+        getCommand("tpdeny").setExecutor(new TpDenyCommand(this));
         getCommand("playerstats").setExecutor(new PlayerStatsCommand());
 
         }

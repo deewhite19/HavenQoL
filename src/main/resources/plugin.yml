@@ -21,3 +21,6 @@ commands:
   tpaccept:
     description: Accepts pending teleport request.
     usage: /tpaccept
+  tpdeny:
+    description: Denies pending teleport request.
+    usage: /tpdeny
