@@ -4,3 +4,8 @@ version: '${version}'
 main: me.david.havenQoL.HavenQoL
 api-version: '26.1.2'
 load: POSTWORLD
+
+commands:
+  sethome:
+    description: Sets your home location.
+    usage: /sethome

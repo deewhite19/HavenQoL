@@ -1,9 +1,16 @@
 package me.david.havenQoL;
 
-import me.david.havenQoL.listeners.DeathCoordinatesListener;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.Location;
+import java.util.HashMap;
+import java.util.UUID;
+import me.david.havenQoL.listeners.DeathCoordinatesListener;
+import me.david.havenQoL.commands.SetHomeCommand;
+
 
 public final class HavenQoL extends JavaPlugin {
+
+    private final HashMap<UUID, Location> homes = new HashMap<>();
 
     @Override
     public void onEnable() {
@@ -11,7 +18,14 @@ public final class HavenQoL extends JavaPlugin {
                 new DeathCoordinatesListener(),
                 this
         );
-    }
+
+        getCommand("sethome").setExecutor(new SetHomeCommand(this));
+
+        }
+
+    public HashMap<UUID, Location> getHomes(){
+        return homes;
+        }
 
     @Override
     public void onDisable() {
