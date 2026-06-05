@@ -15,3 +15,9 @@ commands:
   playerstats:
     description: Opens your player statistics menu.
     usage: /playerstats
+  tpa:
+    description: Sends a teleport request to another player.
+    usage: /tpa <player>
+  tpaccept:
+    description: Accepts pending teleport request.
+    usage: /tpaccept

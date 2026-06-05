@@ -1,19 +1,24 @@
 package me.david.havenQoL;
 
-import me.david.havenQoL.commands.PlayerStatsCommand;
+import me.david.havenQoL.commands.*;
 import me.david.havenQoL.listeners.StatsGUIListener;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.Location;
 import java.util.HashMap;
 import java.util.UUID;
 import me.david.havenQoL.listeners.DeathCoordinatesListener;
-import me.david.havenQoL.commands.SetHomeCommand;
-import me.david.havenQoL.commands.HomeCommand;
 
 
 public final class HavenQoL extends JavaPlugin {
 
     private final HashMap<UUID, Location> homes = new HashMap<>();
+    private final HashMap<UUID, UUID> tpaRequests = new HashMap<>();
+    public HashMap<UUID, UUID> getTpaRequests(){
+        return tpaRequests;
+    }
+    public HashMap<UUID, Location> getHomes(){
+        return homes;
+    }
 
     @Override
     public void onEnable() {
@@ -22,13 +27,12 @@ public final class HavenQoL extends JavaPlugin {
 
         getCommand("sethome").setExecutor(new SetHomeCommand(this));
         getCommand("home").setExecutor(new HomeCommand(this));
+        getCommand("tpa").setExecutor(new TpaCommand(this));
+        getCommand("tpaccept").setExecutor(new TpAcceptCommand(this));
         getCommand("playerstats").setExecutor(new PlayerStatsCommand());
 
         }
 
-    public HashMap<UUID, Location> getHomes(){
-        return homes;
-        }
 
     @Override
     public void onDisable() {
